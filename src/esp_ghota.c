@@ -710,6 +710,7 @@ esp_err_t ghota_start_update_task(ghota_client_handle_t *handle) {
 }
 
 static void ghota_timer_callback(TimerHandle_t xTimer) {
+    ESP_LOGI(TAG, "Timer CB");
     ghota_client_handle_t *handle = (ghota_client_handle_t *)pvTimerGetTimerID(xTimer);
     if (handle) {
         handle->countdown--;
@@ -721,6 +722,7 @@ static void ghota_timer_callback(TimerHandle_t xTimer) {
 }
 
 esp_err_t ghota_start_update_timer(ghota_client_handle_t *handle) {
+    ESP_LOGI(TAG, "Starting update timer");
     if (!handle) {
         ESP_LOGE(TAG, "Failed to initialize GHOTA Client");
         return ESP_FAIL;
